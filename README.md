@@ -25,3 +25,4 @@ Note: Because of the nature of piping into a bash shell, it is not possible to r
 - Allow root prompt without downloading script
 - Switch `wget` to `curl`
 - Remove `tput` from prompt colors, instead use raw character codes
+- Simplify .nanorc and .nanorc_root to only essential changes
