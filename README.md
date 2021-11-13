@@ -1,5 +1,6 @@
 # shup
 _Short for SHell setUP_
+
 Set up your favorite bash prompt, aliases, and .nanorc on any system.
 
 ## Set-up
@@ -18,7 +19,7 @@ Note: Because of the nature of piping into a bash shell, it is not possible to r
 `curl -Ls arix.cc/shup > shup.sh && chmod 700 shup.sh && ./shup.sh && rm shup.sh`
 
 ## To-Do
-- More dynamic .rc file handling
+- More dynamic config file handling
 	- Would be nice to just have an unpackable tarball for all files
 - Non-hard-coded URL path (use a .env file?)
 - Allow root prompt without downloading script
