@@ -23,3 +23,5 @@ Note: Because of the nature of piping into a bash shell, it is not possible to r
 	- Would be nice to just have an unpackable tarball for all files
 - Non-hard-coded URL path (use a .env file?)
 - Allow root prompt without downloading script
+- Switch `wget` to `curl`
+- Remove `tput` from prompt colors, instead use raw character codes
