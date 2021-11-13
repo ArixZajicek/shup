@@ -1,7 +1,3 @@
-<?php
-	header("Content-Type: text/x-shellscript");
-?>
-
 #!/bin/bash
 ## Name:    SHell setUP
 ## Author:  ArixZajicek
