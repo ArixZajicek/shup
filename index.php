@@ -36,7 +36,7 @@
 			echo 'GH_USER=' . $val;
 		}
 
-		array_push($scripts_to_run, $get);
+		array_push($scripts_to_run, $key);
 	}
 
 	if ($abort) {
