@@ -1,5 +1,6 @@
 <?php
 	header("Content-Type: text/x-shellscript");
+	header("Content-Disposition: attachment; filename=\"shup.sh\"");
 
 	$scripts_available = [];
 	foreach(scandir('./scripts') as $filename) {
