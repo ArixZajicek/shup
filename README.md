@@ -4,7 +4,7 @@ _Short for SHell setUP_
 Quickly set up your favorite bash prompt, aliases, .nanorc, and more.
 
 ## Usage Example
-`curl -LSs arix.cc/shup/index.php?bash&nano&pubkeys=ArixZajicek | bash`
+`curl -LSs arix.cc/shup?bash&nano&pubkeys=ArixZajicek | bash`
 
 ## To-Do
 - Add single `all` option to set everything up without explictly listing each script
