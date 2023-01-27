@@ -1,7 +1,7 @@
 # shup
 _Short for SHell setUP_
 
-Quickly set up your favorite bash prompt, aliases, .nanorc, and more.
+Quickly set up your favorite bash prompt, aliases, .nanorc, and more. Scripts set differing bash/nano colors when being run by the root user.
 
 ## Usage Example
 When hosted on a PHP enabled server, all scripts can be listed and will be combined into one.
