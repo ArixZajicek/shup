@@ -5,7 +5,9 @@ Quickly set up your favorite bash prompt, aliases, .nanorc, and more.
 
 ## Usage Example
 When hosted on a PHP enabled server, all scripts can be listed and will be combined into one.
-`curl -LSs arix.cc/shup?bash&nano&pubkeys=ArixZajicek | bash`
+```
+curl -LSs arix.cc/shup?bash&nano&pubkeys=ArixZajicek | bash
+```
 
 Alternatively, the individual scripts can be served statically and used without PHP. They just must be downloaded and executed individually (and pubkeys.sh must have the GH_USER environment variable set), i.e.:
 ```
