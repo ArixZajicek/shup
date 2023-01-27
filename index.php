@@ -1,7 +1,10 @@
 <?php
 	header("Content-Type: text/x-shellscript");
 
-	$scripts_available = array_map(fn($filename): string => substr($filename, 0, -3), scandir('./scripts'));
+	$scripts_available = [];
+	foreach(scandir('./scripts') as $filename) {
+		array_push($scripts_available, substr($filename, 0, -3));
+	}
 	$scripts_to_run = [];
 	$abort = false;
 
