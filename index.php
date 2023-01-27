@@ -37,7 +37,6 @@
 		}
 
 		array_push($scripts_to_run, $key);
-		echo '$scripts_to_run';
 	}
 
 	if ($abort) {
@@ -49,7 +48,7 @@
 	} else {
 
 		foreach($scripts_to_run as $script) {
-			echo file_get_contents('./scripts/' . $scripts_to_run . '.sh');
+			echo file_get_contents('./scripts/' . $script . '.sh');
 			echo "\r\n";
 		}
 	}
