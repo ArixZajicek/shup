@@ -7,10 +7,12 @@ Quickly set up your favorite bash prompt, aliases, .nanorc, and more.
 When hosted on a PHP enabled server, all scripts can be listed and will be combined into one.
 `curl -LSs arix.cc/shup?bash&nano&pubkeys=ArixZajicek | bash`
 
-Alternatively, the individual scripts can be served statically and used without PHP at all, i.e.:
-`curl -LSs arix.cc/shup/scripts/bash.sh | bash`
-`curl -LSs arix.cc/shup/scripts/nano.sh | bash`
-`GH_USER=ArixZajicek curl -LSs arix.cc/shup/scripts/pubkeys.sh | bash`
+Alternatively, the individual scripts can be served statically and used without PHP. They just must be downloaded and executed individually (and pubkeys.sh must have the GH_USER environment variable set), i.e.:
+```
+curl -LSs arix.cc/shup/scripts/bash.sh | bash
+curl -LSs arix.cc/shup/scripts/nano.sh | bash
+curl -LSs arix.cc/shup/scripts/pubkeys.sh | GH_USER=ArixZajicek bash
+```
 
 ## To-Do
 - Add single `all` option to set everything up without explictly listing each script
