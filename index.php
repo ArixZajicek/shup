@@ -3,7 +3,9 @@
 
 	$scripts_available = [];
 	foreach(scandir('./scripts') as $filename) {
-		array_push($scripts_available, substr($filename, 0, -3));
+		if (!is_dir('./scripts/' . $filename)) {
+			array_push($scripts_available, substr($filename, 0, -3));
+		}
 	}
 	$scripts_to_run = [];
 	$abort = false;
