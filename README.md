@@ -19,10 +19,10 @@ Note: Because of the nature of piping into a bash shell, it is not possible to r
 `curl -Ls arix.cc/shup > shup.sh && chmod 700 shup.sh && ./shup.sh && rm shup.sh`
 
 ## To-Do
-- More dynamic config file handling
-	- Would be nice to just have an unpackable tarball for all files
-- Non-hard-coded URL path (use a .env file?)
-- Allow root prompt without downloading script
-- Switch `wget` to `curl`
 - Remove `tput` from prompt colors, instead use raw character codes
-- Simplify .nanorc and .nanorc_root to only essential changes
+- ~~More dynamic config file handling~~ DONE
+	- ~~Would be nice to just have an unpackable tarball for all files~~ No longer needed
+- ~~Non-hard-coded URL path (use a .env file?)~~ No longer an issue
+- ~~Allow root prompt without downloading script~~ Refactored, just run as root if you want root scripts
+- ~~Switch `wget` to `curl`~~ DONE
+- ~~Simplify .nanorc and .nanorc_root to only essential changes~~ DONE
