@@ -21,7 +21,7 @@ curl -LSs shup.arix.cc?run=nano,bash | bash
 
 Note again that to run the keys script, you must provide your github username.
 ```
-curl -LSs shup.arix.cc?run=nano,keys&gh=ArixZajicek | bash
+curl -LSs 'shup.arix.cc?run=nano,keys&gh=ArixZajicek' | bash
 ```
 
 To get a list of available scripts, add the `list` param.
@@ -37,10 +37,10 @@ curl -LSs arix.cc/shup/scripts/pubkeys.sh | GH_USER=ArixZajicek bash
 ```
 
 ## To-Do
-- Remove `tput` from prompt colors, instead use raw character codes
+- ~~Remove `tput` from prompt colors, instead use raw character codes~~ this is the most universal option, so keeping it
 - ~~Add single `all` option to set everything up without explictly listing each script~~ default behavior now
 - ~~More dynamic config file handling~~ DONE
-	- ~~Would be nice to just have an unpackable tarball for all files~~ No longer needed
+	- ~~Would be nice to just have an unpackable tarball for all files~~ No longer needed with restructure
 - ~~Non-hard-coded URL path (use a .env file?)~~ No longer an issue
 - ~~Allow root prompt without downloading script~~ Refactored, just run as root if you want root scripts
 - ~~Switch `wget` to `curl`~~ DONE
