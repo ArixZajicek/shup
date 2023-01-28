@@ -67,10 +67,9 @@
 		msg('No scripts passed! Available scripts are ' . implode(', ', $scripts_available) . '."');
 	} else {
 		foreach($scripts_to_run as $script) {
-			msg('#### ' . $script . '.sh');
+			echo("#### Start of ' . $script . '.sh\r\n");
 			echo file_get_contents('./scripts/' . $script . '.sh');
-			msg();
-			msg();
+			echo("\r\n\r\n");
 		}
 	}
 ?>
