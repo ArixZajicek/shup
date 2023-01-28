@@ -10,7 +10,7 @@
 	$scripts_available = $scripts_to_run = [];
 	// Find possible scripts
 	foreach(scandir('./scripts') as $filename) {
-		if (!is_dir('./scripts/' . $filename) && str_ends_with($filename, '.sh')) {
+		if (!is_dir('./scripts/' . $filename) && substr($filename, -3) === '.sh') {
 			array_push($scripts_available, substr($filename, 0, -3));
 		}
 	}
