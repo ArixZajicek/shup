@@ -1,3 +1,8 @@
+#!/bin/bash
+################################################################################
+##                        ENVIRONMENT VARIABLES                               ##
+################################################################################
+
 <?php
 
 	header("Content-Type: text/x-shellscript");
@@ -67,9 +72,8 @@
 		msg('No scripts passed! Available scripts are ' . implode(', ', $scripts_available) . '."');
 	} else {
 		foreach($scripts_to_run as $script) {
-			echo("#### Start of ' . $script . '.sh\n");
 			echo file_get_contents('./scripts/' . $script . '.sh');
-			echo("\n\n");
+			echo("\n");
 		}
 	}
 ?>
