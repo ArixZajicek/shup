@@ -4,7 +4,7 @@
 	header("Content-Disposition: attachment; filename=\"shup.sh\"");
 
 	function msg($message = '') {
-		echo "echo '" . $message . "'\r\n";
+		echo "echo '" . $message . "'\n";
 	}
 
 	$scripts_available = $scripts_to_run = [];
@@ -67,9 +67,9 @@
 		msg('No scripts passed! Available scripts are ' . implode(', ', $scripts_available) . '."');
 	} else {
 		foreach($scripts_to_run as $script) {
-			echo("#### Start of ' . $script . '.sh\r\n");
+			echo("#### Start of ' . $script . '.sh\n");
 			echo file_get_contents('./scripts/' . $script . '.sh');
-			echo("\r\n\r\n");
+			echo("\n\n");
 		}
 	}
 ?>
