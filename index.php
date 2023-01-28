@@ -3,7 +3,7 @@
 	header("Content-Type: text/x-shellscript");
 	header("Content-Disposition: attachment; filename=\"shup.sh\"");
 
-	echo "#!/bin/bash";
+	echo "#!/bin/bash\n";
 
 	function msg($message = '') {
 		echo "echo '" . $message . "'\n";
