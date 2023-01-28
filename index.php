@@ -1,55 +1,76 @@
 <?php
+
 	header("Content-Type: text/x-shellscript");
 	header("Content-Disposition: attachment; filename=\"shup.sh\"");
 
-	$scripts_available = [];
+	function msg($message = '') {
+		echo "echo '" . $message . "'\r\n";
+	}
+
+	$scripts_available = $scripts_to_run = [];
+	// Find possible scripts
 	foreach(scandir('./scripts') as $filename) {
-		if (!is_dir('./scripts/' . $filename)) {
+		if (!is_dir('./scripts/' . $filename) && str_ends_with($filename, '.sh')) {
 			array_push($scripts_available, substr($filename, 0, -3));
 		}
 	}
-	$scripts_to_run = [];
-	$abort = false;
 
-	foreach($_GET as $key => $val) {
-		if (!in_array($key, $scripts_available)) {
-			echo 'echo "Unexpected script ' . $key . ' passed. Available scripts are ' . implode(', ', $scripts_available) . '."';
-			echo "\r\n";
-			$abort = true;
-			break;
-		}
-		
-		if (in_array($key, $scripts_to_run)) {
-			echo 'echo "Script ' . $key . ' passed more than once, aborting."';
-			echo "\r\n";
-			$abort = true;
-			break;
-		}
+	
+	if (isset($_GET['list'])) {
+		// Just listing the scripts available
+		msg('Available scripts are ' . implode(', ', $scripts_available) . '.');
 
-		if ($key == 'pubkeys') {
-			if (empty($val)) {
-				echo 'echo "pubkeys script requires a GitHub username to be passed."';
-				echo "\r\n";
-				$abort = true;
-				break;
+	} else if (isset($_GET['run'])) {
+		// Explicitly define running scripts
+		foreach(explode(',', $_GET['run']) as $script) {
+			// Make sure script is valid
+			if (!in_array($script, $scripts_available)) {
+				msg('Unexpected script ' . $script . ' passed, aborting. Available scripts are ' . implode(', ', $scripts_available) . '.');
+				exit();
 			}
-			echo 'GH_USER=' . $val;
+
+			// Make sure no duplicates
+			if (in_array($script, $scripts_to_run)) {
+				msg('Script ' . $script . ' passed more than once, aborting.');
+				exit();
+			}
+
+			// Make sure github username is provided for keys script
+			if ($script == 'keys') {
+				if (empty($_GET['gh'])) {
+					msg('keys script requires a GitHub username to be passed."');
+					exit();
+				} else {
+					echo 'GH_USER=' . $_GET['gh'];
+				}
+			}
+
+			// Push to array
+			array_push($scripts_to_run, $script);
 		}
 
-		array_push($scripts_to_run, $key);
+	} else {
+		// Run all scripts
+		foreach($scripts_available as $script) {
+			if ($script == 'keys') {
+				if (!empty($_GET['gh'])) {
+					echo 'GH_USER=' . $_GET['gh'];
+					array_push($scripts_to_run, $script);
+				}
+			} else {
+				array_push($scripts_to_run, $script);
+			}
+		}
 	}
 
-	if ($abort) {
-		echo 'echo "No action taken."';
-		echo "\r\n";
-	} else if (count($scripts_to_run) == 0) {
-		echo 'echo "No scripts passed! Available scripts are ' . implode(', ', $scripts_available) . '."';
-		echo "\r\n";
+	if (count($scripts_to_run) == 0) {
+		msg('No scripts passed! Available scripts are ' . implode(', ', $scripts_available) . '."');
 	} else {
-
 		foreach($scripts_to_run as $script) {
+			msg('#### ' . $script . '.sh');
 			echo file_get_contents('./scripts/' . $script . '.sh');
-			echo "\r\n";
+			msg();
+			msg();
 		}
 	}
 ?>
