@@ -7,7 +7,7 @@
 
 touch ~/.nanorc
 if ! grep -q '# shup_sentinel' ~/.nanorc ; then
-    echo "Adding options to ~/.nanorc"
+    echo "nano.sh: Adding options to ~/.nanorc"
 cat >> ~/.nanorc << "EOF"
 # shup_sentinel
 set autoindent
@@ -54,5 +54,5 @@ set functioncolor magenta
 EOF
     fi
 else
-    echo "~/.nanorc already contains # shup_sentinel, skipping update."
+    echo "nano.sh: ~/.nanorc already contains # shup_sentinel, skipping script"
 fi

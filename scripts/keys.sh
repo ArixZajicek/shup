@@ -6,10 +6,10 @@
 ################################################################################
 
 if [ -z "$GH_USER" ]; then
-    echo "Refusing to execute keys.sh. Variable GH_USER is empty."
+    echo "keys.sh: Refusing to run, variable GH_USER is empty."
 else
     if [ ! -d ~/.ssh ]; then
-        echo "~/.ssh does not exist, creating directory."
+        echo "keys.sh: Creating ~/.ssh directory"
         mkdir ~/.ssh
     fi
 
@@ -19,9 +19,9 @@ else
         if [ -f ~/.ssh/authorized_keys ]; then
             PRIOR_FILTERED_KEYS=`grep --ignore-case --invert-match "# GITHUB USER \"$GH_USER\"" ~/.ssh/authorized_keys`
         fi
-        (echo "$PRIOR_FILTERED_KEYS"; echo "$RETRIEVED_KEYS" | sed --expression "s/$/ # GITHUB USER \"$GH_USER\"/") | tee ~/.ssh/authorized_keys
-        echo "Keys from GitHub user $GH_USER successfully updated."
+        (echo "$PRIOR_FILTERED_KEYS"; echo "$RETRIEVED_KEYS" | sed --expression "s/$/ # GITHUB USER \"$GH_USER\"/") > ~/.ssh/authorized_keys
+        echo "keys.sh: Public keys from GitHub user $GH_USER successfully refreshed!"
     else
-        echo "Failed to retrieve GitHub keys for user $GH_USER! Aborting changes."
+        echo "keys.sh: Failed to retrieve GitHub keys for user $GH_USER! Aborting changes."
     fi
 fi
