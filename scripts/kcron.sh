@@ -1,8 +1,8 @@
 #!/bin/bash
 ################################################################################
-## Name:    keys.sh                                                           ##
+## Name:    kcron.sh                                                          ##
 ## Author:  arix@ser.gal                                                      ##
-## Purpose: Get pubkeys from github!                                          ##
+## Purpose: Add key refresh script to crontab                                 ##
 ################################################################################
 
 #### The following variables may be provided.
