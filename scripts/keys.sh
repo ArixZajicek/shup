@@ -1,5 +1,5 @@
-#!/bin/bash
 ################################################################################
+#!/bin/bash
 ## Name:    keys.sh                                                           ##
 ## Author:  arix@ser.gal                                                      ##
 ## Purpose: Get pubkeys from github!                                          ##

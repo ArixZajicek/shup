@@ -1,5 +1,5 @@
-#!/bin/bash
 ################################################################################
+#!/bin/bash
 ## Name:    kcron.sh                                                          ##
 ## Author:  arix@ser.gal                                                      ##
 ## Purpose: Add key refresh script to crontab                                 ##

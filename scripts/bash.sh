@@ -1,5 +1,5 @@
-#!/bin/bash
 ################################################################################
+#!/bin/bash
 ## Name:    bash.sh                                                           ##
 ## Author:  arix@ser.gal                                                      ##
 ## Purpose: Set up bash prompt, nice aliases, and qol                         ##

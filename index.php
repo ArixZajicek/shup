@@ -58,12 +58,14 @@
 	echo "################################################################################\n";
 
 	if (!empty($_GET['gh'])) {
-		echo "GH_USER=" . $_GET['gh'] . "\n\n";
+		echo "GH_USER=" . $_GET['gh'] . "\n";
 	}
 
 	if (in_array('kcron', $scripts_to_run)) {
 		echo "GH_KEY_SCRIPT_CONTENT=\"" . str_replace('"', '\"', file_get_contents('./scripts/keys.sh')) . "\"\n";
 	}
+
+	echo "\n\n";
 
 	if (count($scripts_to_run) == 0) {
 		msg('No scripts passed! Available scripts are ' . implode(', ', $scripts_available) . '."');

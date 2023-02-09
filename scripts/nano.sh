@@ -1,5 +1,5 @@
-#!/bin/bash
 ################################################################################
+#!/bin/bash
 ## Name:    nano.sh                                                           ##
 ## Author:  arix@ser.gal                                                      ##
 ## Purpose: Set up .nanorc options                                            ##
