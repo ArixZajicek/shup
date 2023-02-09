@@ -49,5 +49,5 @@ else
     (crontab -l; echo "0 */4 * * * GH_USER='$GH_USER' $GH_KEY_SCRIPT_PATH") | sort -u | crontab -
 
     # Also execute it once
-    $GH_KEY_SCRIPT_PATH
+    GH_USER=$GH_USER $GH_KEY_SCRIPT_PATH
 fi
