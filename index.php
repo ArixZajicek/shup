@@ -1,7 +1,9 @@
 <?php
 
 	header("Content-Type: text/x-shellscript");
-	header("Content-Disposition: attachment; filename=\"shup.sh\"");
+	if (!isset($_GET['view'])) {
+		header("Content-Disposition: attachment; filename=\"shup.sh\"");
+	}
 
 	echo "#!/bin/bash\n";
 
@@ -58,7 +60,7 @@
 	}
 
 	if (in_array('kcron', $scripts_to_run)) {
-		echo "GH_KEY_SCRIPT_CONTENT=\"" . file_get_contents('./scripts/' . $script . '.sh') . "\"\n";
+		echo "GH_KEY_SCRIPT_CONTENT=\"" . str_replace('"', '\"', file_get_contents('./scripts/keys.sh')) . "\"\n";
 	}
 
 	if (count($scripts_to_run) == 0) {
