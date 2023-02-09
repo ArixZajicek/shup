@@ -44,8 +44,10 @@
 		}
 
 	} else {
-		// Run all scripts
+		// Run all scripts except default keys, or kcron if gh is missing.
 		foreach($scripts_available as $script) {
+			if ($script == 'keys') continue;
+			if ($script == 'kcron' && !isset($_GET['gh'])) continue;
 			array_push($scripts_to_run, $script);
 		}
 	}
