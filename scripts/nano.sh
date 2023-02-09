@@ -54,5 +54,5 @@ set functioncolor magenta
 EOF
     fi
 else
-    echo "~/.nanorc already contains #shup_sentinel, skipping update."
+    echo "~/.nanorc already contains # shup_sentinel, skipping update."
 fi
