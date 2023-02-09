@@ -6,14 +6,20 @@
 ################################################################################
 
 if [ -z "$GH_USER" ]; then
-    echo 'Refusing to execute keys.sh. GH_USER is empty.'
+    echo 'Refusing to execute keys.sh. Variable GH_USER is empty.'
 else
     if [ ! -d ~/.ssh ]; then
         echo '~/.ssh does not exist, creating directory.'
         mkdir ~/.ssh
     fi
-    echo "Replacing ~/.ssh/authorized_keys with https://github.com/$GH_USER.keys"
-    if ! curl -sS https://github.com/$GH_USER.keys -o ~/.ssh/authorized_keys; then
-      echo 'Failed to set authorized keys!'
+
+    # Make sure we can get the current keys first, otherwise we'll want to fail the operation.
+    RETRIEVED_KEYS=`curl -sS https://github.com/$GH_USER.keys`
+    if [ $? -eq 0 ]; then
+        PRIOR_FILTERED_KEYS=`grep --ignore-case --invert-match "# GITHUB USER \"$GH_USER\"" ~/.ssh/authorized_keys`
+        (echo "$PRIOR_FILTERED_KEYS"; echo "$RETRIEVED_KEYS" | sed --expression 's/$/ # GITHUB USER "'$GH_USER'"/') | tee ~/.ssh/authorized_keys
+        echo "Keys from GitHub user $GH_USER successfully updated."
+    else
+        echo "Failed to retrieve GitHub keys for user $GH_USER! Aborting changes."
     fi
 fi

@@ -37,19 +37,6 @@
 				exit;
 			}
 
-			// Make sure github username is provided for keys script
-			if ($script == 'keys') {
-				if (empty($_GET['gh'])) {
-					msg('keys script requires a GitHub username to be passed."');
-					exit;
-				} else {
-					echo "################################################################################\n";
-					echo "##                        ENVIRONMENT VARIABLES                               ##\n";
-					echo "################################################################################\n";
-					echo "GH_USER=" . $_GET['gh'] . "\n\n";
-				}
-			}
-
 			// Push to array
 			array_push($scripts_to_run, $script);
 		}
@@ -57,18 +44,21 @@
 	} else {
 		// Run all scripts
 		foreach($scripts_available as $script) {
-			if ($script == 'keys') {
-				if (!empty($_GET['gh'])) {
-					echo "################################################################################\n";
-					echo "##                        ENVIRONMENT VARIABLES                               ##\n";
-					echo "################################################################################\n";
-					echo "GH_USER=" . $_GET['gh'] . "\n\n";
-					array_push($scripts_to_run, $script);
-				}
-			} else {
-				array_push($scripts_to_run, $script);
-			}
+			array_push($scripts_to_run, $script);
 		}
+	}
+
+	// Environment variables, if applicable.
+	echo "################################################################################\n";
+	echo "##                        ENVIRONMENT VARIABLES                               ##\n";
+	echo "################################################################################\n";
+
+	if (!empty($_GET['gh'])) {
+		echo "GH_USER=" . $_GET['gh'] . "\n\n";
+	}
+
+	if (in_array('kcron', $scripts_to_run)) {
+		echo "GH_KEY_SCRIPT_CONTENT=\"" . file_get_contents('./scripts/' . $script . '.sh') . "\"\n";
 	}
 
 	if (count($scripts_to_run) == 0) {
