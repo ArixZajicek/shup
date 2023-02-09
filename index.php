@@ -1,7 +1,7 @@
 <?php
 
-	header("Content-Type: text/x-shellscript");
 	if (!isset($_GET['view'])) {
+		header("Content-Type: text/x-shellscript");
 		header("Content-Disposition: attachment; filename=\"shup.sh\"");
 	}
 
