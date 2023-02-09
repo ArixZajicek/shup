@@ -8,7 +8,7 @@
 	echo "#!/bin/bash\n";
 
 	function msg($message = '') {
-		echo "echo '" . $message . "'\n";
+		echo "echo 'shup: " . $message . "'\n";
 	}
 
 	$scripts_available = $scripts_to_run = [];

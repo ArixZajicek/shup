@@ -54,5 +54,5 @@ set functioncolor magenta
 EOF
     fi
 else
-    echo "nano.sh: ~/.nanorc already contains # shup_sentinel, skipping script"
+    echo "nano.sh: ~/.nanorc already contains '# shup_sentinel', skipping script"
 fi
