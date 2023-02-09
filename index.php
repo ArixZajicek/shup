@@ -62,7 +62,7 @@
 	}
 
 	if (in_array('kcron', $scripts_to_run)) {
-		echo "GH_KEY_SCRIPT_CONTENT=\"" . str_replace(['"', '`'], ['\"', '\`'], file_get_contents('./scripts/keys.sh')) . "\"\n";
+		echo "GH_KEY_SCRIPT_CONTENT='" . str_replace("'", "\\'", file_get_contents('./scripts/keys.sh')) . "'\n";
 	}
 
 	echo "\n\n";
