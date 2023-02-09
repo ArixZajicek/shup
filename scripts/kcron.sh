@@ -38,7 +38,7 @@ else
     fi
 
     # Set script content if provided
-    if [ -z "$GH_KEY_SCRIPT_CONTENT" ]; then
+    if [ ! -z "$GH_KEY_SCRIPT_CONTENT" ]; then
         echo "$GH_KEY_SCRIPT_CONTENT" > $GH_KEY_SCRIPT_PATH
     fi
 
